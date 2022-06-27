@@ -1,7 +1,6 @@
 name: Coverity
 on:
   push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -10,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      COV_URL: ${{ secrets.COV_URL }}
+      COV_URL: "https://coveritytest.ncr.com:8443"
       COV_USER: ${{ secrets.COV_USER }}
       COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
       CSA: cov-analysis-linux64-2020.12
@@ -23,12 +22,13 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-        
+
     - name: Coverity Download
       run: |
         curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE $COV_URL/downloadFile.htm?fn=$CSA.tar.gz | tar -C /tmp -xzf -
         curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE -o /tmp/$CSA/bin/license.dat $COV_URL/downloadFile.htm?fn=license.dat
         /tmp/$CSA/bin/cov-configure --java
+
     - name: Coverity Full Scan
       if: ${{ github.event_name != 'pull_request' }}
       run: |
