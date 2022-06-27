@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      COV_URL: "https://coveritytest.ncr.com:8443"
+      COV_URL: "https://coveritytest.ncr.com"
       COV_USER: ${{ secrets.COV_USER }}
       COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
       CSA: cov-analysis-linux64-2020.12
