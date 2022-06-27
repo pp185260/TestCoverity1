@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      COV_URL: ${{ secrets.COV_URL }}
-      COV_USER: ${{ secrets.COV_USER }}
-      COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
+      COV_URL: https://coveritytest.ncr.com
+      COV_USER: admin
+      COVERITY_PASSPHRASE: 19C729EC25A50AC7CE1CCA4D43893493
       CSA: cov-analysis-linux64-2020.12
       COVERITY_PROJECT: testproject-github
       BLDCMD: mvn -B clean compile
