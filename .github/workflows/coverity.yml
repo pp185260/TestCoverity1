@@ -24,7 +24,6 @@ jobs:
       with:
         java-version: 11
 
-
     - name: Coverity Full Scan
       if: ${{ github.event_name != 'pull_request' }}
       run: |
