@@ -25,8 +25,8 @@ jobs:
 
     - name: Coverity Download
       run: |
-        curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE $COV_URL/downloadFile.htm?fn=$CSA.tar.gz | tar -C /tmp -xzf -
-        curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE -o /tmp/$CSA/bin/license.dat $COV_URL/downloadFile.htm?fn=license.dat
+        wget -fLsS --user $COV_USER:$COVERITY_PASSPHRASE $COV_URL/downloadFile.htm?fn=$CSA.tar.gz | tar -C /tmp -xzf -
+        wget -fLsS --user $COV_USER:$COVERITY_PASSPHRASE -o /tmp/$CSA/bin/license.dat $COV_URL/downloadFile.htm?fn=license.dat
         /tmp/$CSA/bin/cov-configure --java
 
     - name: Coverity Full Scan
