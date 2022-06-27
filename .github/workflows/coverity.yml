@@ -14,7 +14,7 @@ jobs:
       COV_USER: ${{ secrets.COV_USER }}
       COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
       CSA: cov-analysis-linux64-2020.12
-      COVERITY_PROJECT: insecure-bank
+      COVERITY_PROJECT: testproject-github
       BLDCMD: mvn -B clean compile
       CHECKERS: --webapp-security
 
